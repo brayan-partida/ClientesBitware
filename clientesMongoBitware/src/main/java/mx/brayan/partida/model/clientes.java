@@ -3,6 +3,8 @@ package mx.brayan.partida.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.annotation.processing.Generated;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -10,8 +12,14 @@ import org.springframework.data.mongodb.core.mapping.FieldType;
 
 import com.mongodb.lang.NonNull;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 @Document("clientes")
+@AllArgsConstructor
+@NoArgsConstructor
 public class clientes {
+
 	@Id
 	private Integer ClienteID;
 	@NonNull
@@ -45,6 +53,9 @@ public class clientes {
 
 	@Field(targetType = FieldType.DATE_TIME)
 	private Date Fecha_Creacion;
+
+	@Field(targetType = FieldType.DATE_TIME)
+	private Date Fecha_Actualizacion;
 
 	public Integer getClienteID() {
 		return ClienteID;
@@ -148,13 +159,6 @@ public class clientes {
 
 	public void setFecha_Actualizacion(Date fecha_Actualizacion) {
 		Fecha_Actualizacion = fecha_Actualizacion;
-	}
-
-	@Field(targetType = FieldType.DATE_TIME)
-	private Date Fecha_Actualizacion;
-
-	public clientes() {
-		// TODO Auto-generated constructor stub
 	}
 
 }
