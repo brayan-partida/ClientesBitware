@@ -36,6 +36,14 @@ public interface clientesServices {
 	 * @param clienteId
 	 * @return
 	 */
-	public Token getClientesId(Integer clienteId);
+	public Token getClientesId(String clienteId);
+
+	/**
+	 * 
+	 * @param clienteId   parametros para la busqueda
+	 * @param clientesPut objeto
+	 * @return Token
+	 */
+	public Token putClientesId(String clienteId, clientes clientesPut);
 
 }

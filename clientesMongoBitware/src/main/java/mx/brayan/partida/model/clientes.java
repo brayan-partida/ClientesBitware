@@ -3,6 +3,7 @@ package mx.brayan.partida.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
@@ -11,9 +12,9 @@ import com.mongodb.lang.NonNull;
 
 @Document("clientes")
 public class clientes {
+	@Id
+	private String clienteid;
 
-	@Field(targetType = FieldType.INT32)
-	private Integer clienteid;
 	@NonNull
 
 	private String nombre_usuario;
@@ -49,7 +50,7 @@ public class clientes {
 	@Field(targetType = FieldType.DATE_TIME)
 	private Date fecha_actualizacion;
 
-	public clientes(Integer clienteid, String nombre_usuario, String password, String apellidos,
+	public clientes(String clienteid, String nombre_usuario, String password, String apellidos,
 			String correo_electronico, Integer edad, BigDecimal estatura, BigDecimal peso, BigDecimal imc,
 			BigDecimal geb, BigDecimal eta, Date fecha_creacion, Date fecha_actualizacion) {
 		super();
@@ -68,11 +69,11 @@ public class clientes {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
-	public Integer getClienteid() {
+	public String getClienteid() {
 		return clienteid;
 	}
 
-	public void setClienteid(Integer clienteid) {
+	public void setClienteid(String clienteid) {
 		this.clienteid = clienteid;
 	}
 

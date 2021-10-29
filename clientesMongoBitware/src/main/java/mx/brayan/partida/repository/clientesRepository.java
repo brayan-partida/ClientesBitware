@@ -13,7 +13,7 @@ public interface clientesRepository extends MongoRepository<clientes, Integer> {
 
 	List<clientes> findByApellidos(String apellidos);
 
-	List<clientes> findByClienteid(Integer clienteid);
+	List<clientes> findByClienteid(String clienteid);
 
 	@Query("{'nombre_usuario':{$regex:0?}}")
 	List<clientes> clientesNombre(String Nombre);
