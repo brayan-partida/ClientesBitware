@@ -3,162 +3,173 @@ package mx.brayan.partida.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import javax.annotation.processing.Generated;
-
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 
 import com.mongodb.lang.NonNull;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 @Document("clientes")
-@AllArgsConstructor
-@NoArgsConstructor
 public class clientes {
 
-	@Id
-	private Integer ClienteID;
+	@Field(targetType = FieldType.INT32)
+	private Integer clienteid;
 	@NonNull
 
-	private String Nombre_Usuario;
+	private String nombre_usuario;
 	@NonNull
 	// @org.springframework.data.mongodb.core.index.Indexed(unique = true)
-	private String Password;
+	private String password;
 
-	private String Apellidos;
+	private String apellidos;
 
 	@NonNull
-	private String Correo_Electronico;
+	private String correo_electronico;
 
-	private Integer Edad;
-
-	@Field(targetType = FieldType.DECIMAL128)
-	private BigDecimal Estatura;
+	private Integer edad;
 
 	@Field(targetType = FieldType.DECIMAL128)
-	private BigDecimal Peso;
+	private BigDecimal estatura;
 
 	@Field(targetType = FieldType.DECIMAL128)
-	private BigDecimal IMC;
+	private BigDecimal peso;
 
 	@Field(targetType = FieldType.DECIMAL128)
-	private BigDecimal GEB;
+	private BigDecimal imc;
 
 	@Field(targetType = FieldType.DECIMAL128)
-	private BigDecimal ETA;
+	private BigDecimal geb;
+
+	@Field(targetType = FieldType.DECIMAL128)
+	private BigDecimal eta;
 
 	@Field(targetType = FieldType.DATE_TIME)
-	private Date Fecha_Creacion;
+	private Date fecha_creacion;
 
 	@Field(targetType = FieldType.DATE_TIME)
-	private Date Fecha_Actualizacion;
+	private Date fecha_actualizacion;
 
-	public Integer getClienteID() {
-		return ClienteID;
+	public clientes(Integer clienteid, String nombre_usuario, String password, String apellidos,
+			String correo_electronico, Integer edad, BigDecimal estatura, BigDecimal peso, BigDecimal imc,
+			BigDecimal geb, BigDecimal eta, Date fecha_creacion, Date fecha_actualizacion) {
+		super();
+		this.clienteid = clienteid;
+		this.nombre_usuario = nombre_usuario;
+		this.password = password;
+		this.apellidos = apellidos;
+		this.correo_electronico = correo_electronico;
+		this.edad = edad;
+		this.estatura = estatura;
+		this.peso = peso;
+		this.imc = imc;
+		this.geb = geb;
+		this.eta = eta;
+		this.fecha_creacion = fecha_creacion;
+		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
-	public void setClienteID(Integer clienteID) {
-		ClienteID = clienteID;
+	public Integer getClienteid() {
+		return clienteid;
 	}
 
-	public String getNombre_Usuario() {
-		return Nombre_Usuario;
+	public void setClienteid(Integer clienteid) {
+		this.clienteid = clienteid;
 	}
 
-	public void setNombre_Usuario(String nombre_Usuario) {
-		Nombre_Usuario = nombre_Usuario;
+	public String getNombre_usuario() {
+		return nombre_usuario;
+	}
+
+	public void setNombre_usuario(String nombre_usuario) {
+		this.nombre_usuario = nombre_usuario;
 	}
 
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
 
 	public String getApellidos() {
-		return Apellidos;
+		return apellidos;
 	}
 
 	public void setApellidos(String apellidos) {
-		Apellidos = apellidos;
+		this.apellidos = apellidos;
 	}
 
-	public String getCorreo_Electronico() {
-		return Correo_Electronico;
+	public String getCorreo_electronico() {
+		return correo_electronico;
 	}
 
-	public void setCorreo_Electronico(String correo_Electronico) {
-		Correo_Electronico = correo_Electronico;
+	public void setCorreo_electronico(String correo_electronico) {
+		this.correo_electronico = correo_electronico;
 	}
 
 	public Integer getEdad() {
-		return Edad;
+		return edad;
 	}
 
 	public void setEdad(Integer edad) {
-		Edad = edad;
+		this.edad = edad;
 	}
 
 	public BigDecimal getEstatura() {
-		return Estatura;
+		return estatura;
 	}
 
 	public void setEstatura(BigDecimal estatura) {
-		Estatura = estatura;
+		this.estatura = estatura;
 	}
 
 	public BigDecimal getPeso() {
-		return Peso;
+		return peso;
 	}
 
 	public void setPeso(BigDecimal peso) {
-		Peso = peso;
+		this.peso = peso;
 	}
 
-	public BigDecimal getIMC() {
-		return IMC;
+	public BigDecimal getImc() {
+		return imc;
 	}
 
-	public void setIMC(BigDecimal iMC) {
-		IMC = iMC;
+	public void setImc(BigDecimal imc) {
+		this.imc = imc;
 	}
 
-	public BigDecimal getGEB() {
-		return GEB;
+	public BigDecimal getGeb() {
+		return geb;
 	}
 
-	public void setGEB(BigDecimal gEB) {
-		GEB = gEB;
+	public void setGeb(BigDecimal geb) {
+		this.geb = geb;
 	}
 
-	public BigDecimal getETA() {
-		return ETA;
+	public BigDecimal getEta() {
+		return eta;
 	}
 
-	public void setETA(BigDecimal eTA) {
-		ETA = eTA;
+	public void setEta(BigDecimal eta) {
+		this.eta = eta;
 	}
 
-	public Date getFecha_Creacion() {
-		return Fecha_Creacion;
+	public Date getFecha_creacion() {
+		return fecha_creacion;
 	}
 
-	public void setFecha_Creacion(Date fecha_Creacion) {
-		Fecha_Creacion = fecha_Creacion;
+	public void setFecha_creacion(Date fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
 	}
 
-	public Date getFecha_Actualizacion() {
-		return Fecha_Actualizacion;
+	public Date getFecha_actualizacion() {
+		return fecha_actualizacion;
 	}
 
-	public void setFecha_Actualizacion(Date fecha_Actualizacion) {
-		Fecha_Actualizacion = fecha_Actualizacion;
+	public void setFecha_actualizacion(Date fecha_actualizacion) {
+		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
 }
