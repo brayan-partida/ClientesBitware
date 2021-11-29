@@ -29,6 +29,11 @@ public class clientesControllers {
 
 	}
 
+	/**
+	 * 
+	 * @param clienteid
+	 * @return
+	 */
 	@GetMapping("/get/nutrinet/cliente/{clienteid}")
 	public Token getCliente(@PathVariable String clienteid) {
 		Token token = new Token();
@@ -44,10 +49,44 @@ public class clientesControllers {
 		return token;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GetMapping("/get/nutrinet/cliente")
 	public Token getClientesAll() {
 		Token token = new Token();
 		token = services.getClientes();
+		return token;
+	}
+
+	@GetMapping("/getpassword/{password}")
+	public Token getPassword(@PathVariable String password) {
+		Token token = new Token();
+		token = services.getnombrePasswordFind(password);
+		return token;
+
+	}
+
+	/**
+	 * 
+	 * @param nombre_usuario
+	 * @return
+	 */
+	@GetMapping("/getusuario/{nombre_usuario}/")
+	public Token getUsuario(@PathVariable String nombre_usuario) {
+		Token token = new Token();
+		token = services.getUsuariosFind(nombre_usuario);
+		return token;
+	}
+
+	/*
+	 * busca los nombres y los correos electronicos
+	 */
+	@GetMapping("/getusuarioemail/{nombre_usuario}/{correo_electronico}")
+	public Token getUsuario(@PathVariable String nombre_usuario, @PathVariable String correo_electronico) {
+		Token token = new Token();
+		token = services.getUsuarioAndEmail(nombre_usuario, correo_electronico);
 		return token;
 	}
 

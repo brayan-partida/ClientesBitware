@@ -1,9 +1,11 @@
 package mx.brayan.partida.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
@@ -11,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.FieldType;
 import com.mongodb.lang.NonNull;
 
 @Document("clientes")
-public class clientes {
+public class clientes implements Serializable {
 	@Id
 	private String clienteid;
 
@@ -25,10 +27,11 @@ public class clientes {
 	private String apellidos;
 
 	@NonNull
+	@TextIndexed
 	private String correo_electronico;
 
 	private Integer edad;
-
+ 
 	@Field(targetType = FieldType.DECIMAL128)
 	private BigDecimal estatura;
 
@@ -171,6 +174,10 @@ public class clientes {
 
 	public void setFecha_actualizacion(Date fecha_actualizacion) {
 		this.fecha_actualizacion = fecha_actualizacion;
+	}
+	
+	public clientes() {
+		
 	}
 
 }

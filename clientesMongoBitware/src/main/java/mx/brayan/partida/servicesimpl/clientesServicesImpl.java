@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import mx.brayan.partida.Token.Token;
 import mx.brayan.partida.model.clientes;
+import mx.brayan.partida.repository.clientesQuery;
 import mx.brayan.partida.repository.clientesRepository;
+import mx.brayan.partida.repository.mongoTemplateQuery;
 import mx.brayan.partida.services.clientesServices;
 
 @Service
@@ -16,6 +18,10 @@ public class clientesServicesImpl implements clientesServices {
 	@Autowired(required = true)
 	clientesRepository clientesrepo;
 
+	@Autowired(required = true)
+	clientesQuery clientesQuery;
+
+	// mongoTemplateQuery mongo=new mongoTemplateQuery();
 	/**
 	 * obtiene todos los clientes de en general de la colleccion
 	 */
@@ -89,6 +95,54 @@ public class clientesServicesImpl implements clientesServices {
 			return token;
 		}
 
+	}
+
+	@Override
+	public Token getnombrePasswordFind(String password) {
+		Token token = new Token();
+		List<clientes> listacliente = clientesQuery.findByPassword(password);
+		if (listacliente.isEmpty() == true) {
+			token.setMensaje("no se encontro ningun cliente con este ID");
+			token.setError(true);
+			token.setOk(false);
+			return token;
+		} else {
+			token.setObjeto(listacliente);
+			token.setMensaje("se encointro registros");
+			return token;
+		}
+	}
+
+	@Override
+	public Token getUsuariosFind(String usuario) {
+		Token token = new Token();
+		List<clientes> listacliente = clientesQuery.findByNombre_Usuario(usuario);
+		if (listacliente.isEmpty() == true) {
+			token.setMensaje("no se encontro ningun cliente con este ID");
+			token.setError(true);
+			token.setOk(false);
+			return token;
+		} else {
+			token.setObjeto(listacliente);
+			token.setMensaje("se encointro registros");
+			return token;
+		}
+	}
+
+	@Override
+	public Token getUsuarioAndEmail(String usuario, String email) {
+		Token token = new Token();
+		List<clientes> listacliente = clientesQuery.findByUsuariosAndCorreo(usuario,email);
+		if (listacliente.isEmpty() == true) {
+			token.setMensaje("no se encontro ningun cliente con este ID");
+			token.setError(true);
+			token.setOk(false);
+			return token;
+		} else {
+			token.setObjeto(listacliente);
+			token.setMensaje("se encointro registros");
+			return token;
+		}
 	}
 
 }

@@ -46,4 +46,27 @@ public interface clientesServices {
 	 */
 	public Token putClientesId(String clienteId, clientes clientesPut);
 
+	/**
+	 * 
+	 * @param usaurio
+	 * @return
+	 */
+	public Token getnombrePasswordFind(String password);
+
+	/**
+	 * busca el usuario
+	 * 
+	 * @param usuario
+	 * @return
+	 */
+	public Token getUsuariosFind(String usuario);
+
+	/**
+	 * busca el usuario y el email
+	 * 
+	 * @param usuario
+	 * @param email
+	 * @return
+	 */
+	public Token getUsuarioAndEmail(String usuario, String email);
 }
